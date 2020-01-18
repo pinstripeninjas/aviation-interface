@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Forecast Table</title>
+		<!-- Bootstrap CDN -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Local Style Sheet -->
+		<link rel="stylesheet" href="style.css" />
+
+		<!-- Google Font -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<!-- Axios CDN -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-NWS">
+			<a class="navbar-brand" href="#">NWS Tucson</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarTogglerDemo02"
+				aria-controls="navbarTogglerDemo02"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Body Content -->
+		<div class="container-fluid mt-5">
+			<div class="row">
+				<div class="col-12 d-flex justify-content-center">
+					<button id="request-fcst" class="btn btn-lg btn-primary m-4" type="button">
+						Request New Forecast
+					</button>
+					<button class="btn btn-lg btn-secondary m-4">Edit Current Forecast</button>
+				</div>
+				<div class="col-8">
+					<form>
+						<table id="main-table" class="table table-hover"></table>
+					</form>
+				</div>
+				<div class="col-4">
+					<table id="criteria-table" class="table"></table>
+				</div>
+			</div>
+			<div id="submit-btn" class="col-12 d-flex justify-content-center"></div>
+		</div>
+		<!-- <footer class="footer sticky-bottom">
+			<div class="text-muted">Here's a footer. Place feet here.</div>
+		</footer> -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+		<!-- Local script -->
+		<script src="script.js"></script>
+	</body>
+</html>

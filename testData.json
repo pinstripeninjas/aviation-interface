@@ -1,0 +1,138 @@
+{
+	"site": "ktus",
+	"elevation": 2500,
+	"lat": 32.2,
+	"lon": -110.5,
+	"validPeriod": {
+		"day": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+		"date": ["10/6", "10/7", "10/8", "10/9", "10/10", "10/11", "10/12"]
+	},
+	"forecast": [
+		{
+			"variable": "maxT",
+			"fullName": "Max Temperature",
+			"values": [101, 98, 88, 90, 91, 93, 90]
+		},
+		{
+			"variable": "densityAlt",
+			"fullName": "Density Altitiude",
+			"values": [5700, 5300, 4600, 4800, 4900, 5000, 4600]
+		},
+		{
+			"variable": "maxSfcWind",
+			"fullName": "Max Surface Wind",
+			"values": ["NW 8", "W 12", "SW 18", "NW 10", "NW 8", "W 8", "W 5"]
+		},
+		{
+			"variable": "maxGustSpread",
+			"fullName": "Max Gust Spread",
+			"values": [3, 5, 7, 4, 3, 3, 2]
+		},
+		{
+			"variable": "TSRA",
+			"fullName": "Thunderstorms",
+			"values": [0, 10, 60, 0, 0, 0, 0]
+		},
+		{
+			"variable": "maxRH",
+			"fullName": "Max Relative Humidty",
+			"values": [20, 60, 85, 70, 50, 30, 25]
+		},
+		{
+			"variable": "wind10k",
+			"fullName": "Winds 10k ft AGL",
+			"values": [20, 30, 35, 20, 15, 20, 15]
+		},
+		{
+			"variable": "totalCloud",
+			"fullName": "Total Cloud Cover",
+			"values": [20, 30, 90, 50, 10, 20, 10]
+		}
+	],
+	"dropdown": [
+		{
+			"variable": "visibility",
+			"fullName": "Visibility",
+			"options": [
+				{
+					"color": "green",
+					"value": "",
+					"text": ""
+				},
+				{
+					"color": "yellow",
+					"value": "2to3",
+					"text": "2-3mi"
+				},
+				{
+					"color": "red",
+					"value": "less2",
+					"text": "0-2mi"
+				}
+			]
+		},
+		{
+			"variable": "wind5k",
+			"fullName": "Winds 5k ft AGL",
+			"options": [
+				{
+					"color": "green",
+					"value": "",
+					"text": ""
+				},
+				{
+					"color": "yellow",
+					"value": "20to30",
+					"text": "20-30"
+				},
+				{
+					"color": "red",
+					"value": "above30",
+					"text": "30+"
+				}
+			]
+		},
+		{
+			"variable": "lowestFltCat",
+			"fullName": "Lowest Flight Category",
+			"options": [
+				{
+					"color": "green",
+					"value": "",
+					"text": ""
+				},
+				{
+					"color": "yellow",
+					"value": "MVFR",
+					"text": "MVFR"
+				},
+				{
+					"color": "red",
+					"value": "IFR",
+					"text": "IFR"
+				}
+			]
+		},
+		{
+			"variable": "mtnObs",
+			"fullName": "Mountain Obscuration",
+			"options": [
+				{
+					"color": "green",
+					"value": "",
+					"text": ""
+				},
+				{
+					"color": "yellow",
+					"value": "psbl",
+					"text": "Psbl"
+				},
+				{
+					"color": "red",
+					"value": "likely",
+					"text": "Likely"
+				}
+			]
+		}
+	]
+}
