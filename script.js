@@ -44,9 +44,11 @@ const buildFullMatrix = () => {
 				buildTableBody(forecast.data);
 				buildTableDropdown(forecast.data);
 				buildTableHeader(forecast.data);
-
-				reqFcst.innerHTML = "Request New Forecast";
+				// add listeners that color matrices when changed
 				colorListener();
+				dropdownListener();
+				// add button and remove "loading" text
+				reqFcst.innerHTML = "Request New Forecast";
 				addSubmitBtn();
 			})
 		)
@@ -147,15 +149,33 @@ const addSubmitBtn = () => {
 	submitBtn.appendChild(newBtn);
 };
 
-////// This works but need to find way to wait for full table to be built ///////////////
+////// Listener that updates color of input cells when data changes ///////////////
 const colorListener = () => {
 	const inputListener = document.querySelectorAll("input");
-	for (const input of inputListener) {
-		input.addEventListener("input", function(e) {
-			const changedValue = e.target.value;
-			const changedVariable = e.target.name.slice(0, -2);
+	for (let input of inputListener) {
+		input.addEventListener("input", function(event) {
+			const changedValue = event.target.value;
+			const changedVariable = event.target.name.slice(0, -2);
 			this.parentNode.classList.remove("red", "yellow");
 			this.parentNode.classList.add(checkCriteria(changedValue, changedVariable));
+		});
+	}
+};
+
+////// Listener that updates color of select/option cells when data changes ////////
+const dropdownListener = () => {
+	const selectListener = document.querySelectorAll("select");
+	for (let select of selectListener) {
+		select.addEventListener("input", function(event) {
+			if (event.target.selectedIndex === 0) {
+				this.parentNode.classList.remove("red", "yellow");
+			} else if (event.target.selectedIndex === 1) {
+				this.parentNode.classList.remove("red");
+				this.parentNode.classList.add("yellow");
+			} else {
+				this.parentNode.classList.remove("yellow");
+				this.parentNode.classList.add("red");
+			}
 		});
 	}
 };
