@@ -85,8 +85,8 @@
 		{
 			"variable": "totalCloud",
 			"isInverse": false,
-			"green": 9,
-			"yellow": 30,
+			"green": 49,
+			"yellow": 80,
 			"noWx": "Below 50%",
 			"modWx": "50 to 80%",
 			"majWx": "Above 80%",

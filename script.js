@@ -83,8 +83,9 @@ const buildTableBody = (data) => {
 			newInput.setAttribute("name", data.forecast[i].variable + "[]");
 			newInput.setAttribute("type", "input");
 			const newValue = data.forecast[i].values[j];
-			const newVariable = data.forecast[i].variable[j];
-			// add in class change
+			const newVariable = data.forecast[i].variable;
+			// add in class to color cell based on criteria
+			newCell.classList.add(checkCriteria(newValue, newVariable));
 			newInput.value = newValue;
 			newCell.appendChild(newInput);
 		}
