@@ -103,7 +103,6 @@ const buildTableTextbox = (data, i, tr) => {
 
 /////////// Function to build dropdown section of table ///////////////
 const buildTableDropdown = (data, i, tr) => {
-	console.log(data);
 	for (let j = 0; j < data.validPeriod.day.length; j++) {
 		const newCell = tr.insertCell(j + 1);
 		const newSelect = document.createElement("select");
