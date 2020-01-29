@@ -9,48 +9,55 @@
 	},
 	"forecast": [
 		{
+			"dataType": "textbox",
 			"variable": "maxT",
 			"fullName": "Max Temperature",
 			"values": [101, 98, 88, 90, 91, 93, 90]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "densityAlt",
 			"fullName": "Density Altitiude",
 			"values": [5700, 5300, 4600, 4800, 4900, 5000, 4600]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "maxSfcWind",
 			"fullName": "Max Surface Wind",
 			"values": ["NW 8", "W 12", "SW 18", "NW 10", "NW 8", "W 8", "W 5"]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "maxGustSpread",
 			"fullName": "Max Gust Spread",
 			"values": [3, 5, 7, 4, 3, 3, 2]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "TSRA",
 			"fullName": "Thunderstorms",
 			"values": [0, 10, 60, 0, 0, 0, 0]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "maxRH",
 			"fullName": "Max Relative Humidty",
 			"values": [20, 60, 85, 70, 50, 30, 25]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "wind10k",
 			"fullName": "Winds 10k ft AGL",
 			"values": [20, 30, 35, 20, 15, 20, 15]
 		},
 		{
+			"dataType": "textbox",
 			"variable": "totalCloud",
 			"fullName": "Total Cloud Cover",
 			"values": [20, 30, 90, 50, 10, 20, 10]
-		}
-	],
-	"dropdown": [
+		},
 		{
+			"dataType": "dropdown",
 			"variable": "visibility",
 			"fullName": "Visibility",
 			"options": [
@@ -72,6 +79,7 @@
 			]
 		},
 		{
+			"dataType": "dropdown",
 			"variable": "wind5k",
 			"fullName": "Winds 5k ft AGL",
 			"options": [
@@ -93,6 +101,7 @@
 			]
 		},
 		{
+			"dataType": "dropdown",
 			"variable": "lowestFltCat",
 			"fullName": "Lowest Flight Category",
 			"options": [
@@ -114,6 +123,7 @@
 			]
 		},
 		{
+			"dataType": "dropdown",
 			"variable": "mtnObs",
 			"fullName": "Mountain Obscuration",
 			"options": [

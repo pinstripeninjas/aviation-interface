@@ -42,7 +42,6 @@ const buildFullMatrix = () => {
 				getCriteriaHeader(criteria.data);
 				// makes matrix
 				buildTableBody(forecast.data);
-				buildTableDropdown(forecast.data);
 				buildTableHeader(forecast.data);
 				// add listeners that color matrices when changed
 				colorListener();
@@ -78,45 +77,46 @@ const buildTableBody = (data) => {
 		const th = document.createElement("th");
 		th.innerHTML = data.forecast[i].fullName;
 		tr.appendChild(th);
-		for (let j = 0; j < data.validPeriod.day.length; j++) {
-			const newCell = tr.insertCell(j + 1);
-			const newInput = document.createElement("input");
-			//newCell.classList.add("tableDataCell", data.forecast[i].variable);
-			newInput.setAttribute("name", data.forecast[i].variable + "[]");
-			newInput.setAttribute("type", "input");
-			const newValue = data.forecast[i].values[j];
-			const newVariable = data.forecast[i].variable;
-			// add in class to color cell based on criteria
-			newCell.classList.add(checkCriteria(newValue, newVariable));
-			newInput.value = newValue;
-			newCell.appendChild(newInput);
+		if (data.forecast[i].dataType === "textbox") {
+			buildTableTextbox(data, i, tr);
+		} else if (data.forecast[i].dataType === "dropdown") {
+			buildTableDropdown(data, i, tr);
 		}
+	}
+};
+
+///////////// Function to build textbox datatype ////////////////////
+const buildTableTextbox = (data, i, tr) => {
+	for (let j = 0; j < data.validPeriod.day.length; j++) {
+		const newCell = tr.insertCell(j + 1);
+		const newInput = document.createElement("input");
+		newInput.setAttribute("name", data.forecast[i].variable + "[]");
+		newInput.setAttribute("type", "input");
+		const newValue = data.forecast[i].values[j];
+		const newVariable = data.forecast[i].variable;
+		// add in class to color cell based on criteria
+		newCell.classList.add(checkCriteria(newValue, newVariable));
+		newInput.value = newValue;
+		newCell.appendChild(newInput);
 	}
 };
 
 /////////// Function to build dropdown section of table ///////////////
-const buildTableDropdown = (data) => {
-	for (let i = 0; i < data.dropdown.length; i++) {
-		const tr = mainTable.insertRow(-1);
-		const th = document.createElement("th");
-		th.innerHTML = data.dropdown[i].fullName;
-		tr.appendChild(th);
-		for (let j = 0; j < data.validPeriod.day.length; j++) {
-			const newCell = tr.insertCell(j + 1);
-			const newSelect = document.createElement("select");
-			//newCell.classList.add("tableDataCell");
-			newSelect.setAttribute("name", data.dropdown[i].variable + "[]");
-			newCell.appendChild(newSelect);
-			for (let k = 0; k < data.dropdown[i].options.length; k++) {
-				const newOption = document.createElement("option");
-				newOption.setAttribute("value", data.dropdown[i].options[k].value);
-				newOption.innerHTML = data.dropdown[i].options[k].text;
-				newSelect.appendChild(newOption);
-			}
+const buildTableDropdown = (data, i, tr) => {
+	console.log(data);
+	for (let j = 0; j < data.validPeriod.day.length; j++) {
+		const newCell = tr.insertCell(j + 1);
+		const newSelect = document.createElement("select");
+		newSelect.setAttribute("name", data.forecast[i].variable + "[]");
+		newCell.appendChild(newSelect);
+		for (let k = 0; k < data.forecast[i].options.length; k++) {
+			const newOption = document.createElement("option");
+			newOption.setAttribute("value", data.forecast[i].options[k].value);
+			newOption.innerHTML = data.forecast[i].options[k].text;
+			newSelect.appendChild(newOption);
 		}
 	}
 };
-
 ///// function to load individual field data into criteria table /////
 const getCriteriaBody = (data) => {
 	for (let i = 0; i < data.body.length; i++) {
