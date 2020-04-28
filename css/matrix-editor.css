@@ -1,0 +1,122 @@
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+input,
+select {
+  width: 70px;
+  height: 27px;
+}
+
+td,
+.table-top,
+input,
+.center {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #0a4595;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 15px;
+}
+
+nav div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav div h3 {
+  margin: 0 2px;
+  font-weight: 400;
+  font-size: 1.7rem;
+}
+
+nav div img {
+  margin: 0 2px;
+  width: 30px;
+  height: 30px;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav ul li {
+  list-style-type: none;
+  padding: 0 15px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+nav ul li:hover {
+  background-color: #072f65;
+  cursor: pointer;
+}
+
+.table-divider {
+  border-bottom: 2px solid #ddd;
+}
+
+.green {
+  background-color: rgba(97, 175, 95, 0.4);
+}
+
+.yellow {
+  background-color: rgba(255, 240, 80, 0.6);
+}
+
+.red {
+  background-color: rgba(242, 92, 5, 0.6);
+}
+
+.bg-NWS {
+  background-color: #0a4595;
+}
+
+.btn-NWS {
+  background-color: #aaa;
+}
+
+.btn-primary, .btn-primary:focus {
+  background-color: #0099d8;
+  border-color: #0099d8;
+}
+
+.btn-primary:hover {
+  background-color: #0087bf;
+  border-color: #0087bf;
+}
+
+.btn-primary:focus {
+  outline: 0;
+}
+
+#criteria-table td {
+  height: 52px;
+}
+/*# sourceMappingURL=matrix-editor.css.map */

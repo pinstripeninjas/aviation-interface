@@ -1,3 +1,7 @@
+// JSON links to be adjusted accordingly
+const urlEditorData = "./json/editorData.json";
+const urlEditorCriteria = "./json/editorCriteria.json";
+
 ///////////// Variables to select DOM elements //////////////
 const mainTable = document.querySelector("#main-table");
 const criteriaTable = document.querySelector("#criteria-table");
@@ -9,7 +13,7 @@ let criteriaData = {};
 
 //////////// button listener to request forecast ///////////
 const reqFcst = document.querySelector("#request-fcst");
-reqFcst.addEventListener("click", function() {
+reqFcst.addEventListener("click", function () {
 	clearTables();
 	buildFullMatrix();
 });
@@ -27,12 +31,12 @@ const buildFullMatrix = () => {
 		.all([
 			axios({
 				method: "get",
-				url: "testData.json",
-				onDownloadProgress: function() {
+				url: urlEditorData,
+				onDownloadProgress: function () {
 					reqFcst.innerHTML = "<span class='spinner-border'></span> Loading...";
-				}
+				},
 			}),
-			axios.get("criteria.json")
+			axios.get(urlEditorCriteria),
 		])
 		.then(
 			axios.spread((forecast, criteria) => {
@@ -152,9 +156,10 @@ const addSubmitBtn = () => {
 const colorListener = () => {
 	const inputListener = document.querySelectorAll("input");
 	for (let input of inputListener) {
-		input.addEventListener("input", function(event) {
+		input.addEventListener("input", function (event) {
 			const changedValue = event.target.value;
 			const changedVariable = event.target.name.slice(0, -2);
+			console.log(changedValue, changedVariable, event.target);
 			this.parentNode.classList.remove("red", "yellow");
 			this.parentNode.classList.add(checkCriteria(changedValue, changedVariable));
 		});
@@ -165,7 +170,7 @@ const colorListener = () => {
 const dropdownListener = () => {
 	const selectListener = document.querySelectorAll("select");
 	for (let select of selectListener) {
-		select.addEventListener("input", function(event) {
+		select.addEventListener("input", function (event) {
 			if (event.target.selectedIndex === 0) {
 				this.parentNode.classList.remove("red", "yellow");
 			} else if (event.target.selectedIndex === 1) {
@@ -196,6 +201,5 @@ const checkCriteria = (value, variable) => {
 		return "red";
 	} else if (value > criteriaObj.green) {
 		return "yellow";
-	} else {
 	}
 };

@@ -1,0 +1,111 @@
+// Global color scheme
+$primary-blue: #0a4595;
+$dark-gray: #333;
+$secondary-blue: #0099d8;
+$light-gray: #eee;
+$green: rgba(97, 175, 95, 0.4);
+$yellow: rgb(255, 240, 80);
+$red: #f25c05;
+
+body {
+	font-family: "Quicksand", sans-serif;
+}
+
+input,
+select {
+	width: 70px;
+	height: 27px;
+}
+
+td,
+.table-top,
+input,
+.center {
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	&:hover {
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+nav {
+	display: flex;
+	background: $primary-blue;
+	color: #fff;
+	height: 50px;
+	line-height: 50px;
+	justify-content: space-between;
+	padding: 0 15px;
+	div {
+		display: flex;
+		align-items: center;
+		h3 {
+			margin: 0 2px;
+			font-weight: 400;
+			font-size: 1.7rem;
+		}
+		img {
+			margin: 0 2px;
+			width: 30px;
+			height: 30px;
+		}
+	}
+	ul {
+		display: flex;
+		li {
+			list-style-type: none;
+			padding: 0 15px;
+			transition: all 0.5s;
+			&:hover {
+				background-color: darken($primary-blue, 10%);
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.table-divider {
+	border-bottom: 2px solid #ddd;
+}
+
+.green {
+	background-color: $green;
+}
+
+.yellow {
+	background-color: adjust-color($yellow, $alpha: -0.4);
+}
+
+.red {
+	background-color: adjust-color($red, $alpha: -0.4);
+}
+
+.bg-NWS {
+	background-color: $primary-blue;
+}
+
+.btn-NWS {
+	background-color: #aaa;
+}
+
+.btn-primary {
+	background-color: $secondary-blue;
+	border-color: $secondary-blue;
+	&:hover {
+		background-color: darken($secondary-blue, 5%);
+		border-color: darken($secondary-blue, 5%);
+	}
+	&:focus {
+		@extend .btn-primary;
+		outline: 0;
+	}
+}
+
+#criteria-table td {
+	height: 52px;
+}

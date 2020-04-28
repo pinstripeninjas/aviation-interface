@@ -14,11 +14,11 @@
 		/>
 
 		<!-- Local Style Sheet -->
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="./css/matrix-editor.css" />
 
 		<!-- Google Font -->
 		<link
-			href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap"
 			rel="stylesheet"
 		/>
 		<!-- Axios CDN -->
@@ -26,36 +26,20 @@
 	</head>
 	<body>
 		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-NWS">
-			<a class="navbar-brand" href="#">NWS Tucson</a>
-			<button
-				class="navbar-toggler"
-				type="button"
-				data-toggle="collapse"
-				data-target="#navbarTogglerDemo02"
-				aria-controls="navbarTogglerDemo02"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
-			>
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-					</li>
-				</ul>
+		<nav>
+			<div>
+				<img src="./imgs/150px-NOAA-Logo.png" alt="NOAA Logo" />
+				<img src="./imgs/150px-NWS-Logo.png" alt="NWS Logo" />
+				<h3><a href="https://www.weather.gov/twc">NWS TUCSON</a></h3>
 			</div>
+			<div>***EXPERIMENTAL***</div>
+			<ul>
+				<a href="./index.html"><li>Forecast Matrix</li></a>
+				<a href="./climatology.html"><li>Climatology</li></a>
+			</ul>
 		</nav>
 		<!-- Body Content -->
-		<div class="container-fluid mt-5">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12 d-flex justify-content-center">
 					<button id="request-fcst" class="btn btn-lg btn-primary m-4" type="button">
@@ -94,6 +78,6 @@
 			crossorigin="anonymous"
 		></script>
 		<!-- Local script -->
-		<script src="script.js"></script>
+		<script src="./js/matrixEditor.js"></script>
 	</body>
 </html>
