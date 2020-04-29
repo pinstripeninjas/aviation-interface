@@ -1,7 +1,7 @@
 // JSON links to be adjusted accordingly
 const urlEditorData = "./json/editorData.json";
 const urlEditorCriteria = "./json/editorCriteria.json";
-const urlSubmittedForecast = "./";
+const urlSubmittedForecast = "https://5ea9e029a873660016720f47.mockapi.io/forecast";
 
 ///////////// Variables to select DOM elements //////////////
 const mainTable = document.querySelector("#main-table");
@@ -154,7 +154,6 @@ const addSubmitBtn = () => {
 	const newBtn = document.createElement("button");
 	newBtn.classList.add("btn", "btn-lg", "btn-primary", "my-4");
 	newBtn.innerHTML = "Submit Forecast";
-	newBtn.setAttribute("id", "submit-btn");
 	newBtn.addEventListener("click", submitForecast);
 	submitBtn.appendChild(newBtn);
 };
@@ -256,5 +255,17 @@ const submitForecast = () => {
 	console.log(finalMatrixData);
 	const stringifyMatrixData = JSON.stringify(finalMatrixData);
 	// make POST request with final data
-	axios.post(urlSubmittedForecast, stringifyMatrixData);
+	axios
+		.post(urlSubmittedForecast, stringifyMatrixData)
+		.then(() => {
+			const message = document.createElement("p");
+			message.innerText = "Submitted Successfully";
+			submitBtn.appendChild(message);
+		})
+		.catch((err) => {
+			console.log(err);
+			const message = document.createElement("p");
+			message.innerHTML = "Something Went Wrong <br>" + err;
+			submitBtn.appendChild(message);
+		});
 };
