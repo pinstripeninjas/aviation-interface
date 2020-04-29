@@ -12,103 +12,137 @@
 			"dataType": "textbox",
 			"variable": "maxT",
 			"fullName": "Max Temperature",
-			"values": [101, 98, 88, 90, 91, 93, 90]
+			"displayGreen": true,
+			"exactValue": true,
+			"values": [101, 98, 88, 90, 91, 93, 90],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "densityAlt",
 			"fullName": "Density Altitiude",
-			"values": [5700, 5300, 4600, 4800, 4900, 5000, 4600]
+			"displayGreen": true,
+			"exactValue": true,
+			"values": [5700, 5300, 4600, 4800, 4900, 5000, 4600],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "maxSfcWind",
 			"fullName": "Max Surface Wind",
-			"values": ["NW 8", "W 12", "SW 18", "NW 10", "NW 8", "W 8", "W 5"]
+			"displayGreen": true,
+			"exactValue": true,
+			"values": ["NW 8", "W 12", "SW 18", "NW 10", "NW 8", "W 8", "W 5"],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "maxGustSpread",
 			"fullName": "Max Gust Spread",
-			"values": [3, 5, 7, 4, 3, 3, 2]
+			"displayGreen": true,
+			"exactValue": true,
+			"values": [3, 5, 7, 4, 3, 3, 2],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "TSRA",
 			"fullName": "Thunderstorms",
-			"values": [0, 10, 60, 0, 0, 0, 0]
+			"displayGreen": false,
+			"exactValue": false,
+			"values": [0, 10, 60, 0, 0, 0, 0],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "maxRH",
 			"fullName": "Max Relative Humidty",
-			"values": [20, 60, 85, 70, 50, 30, 25]
+			"displayGreen": false,
+			"exactValue": true,
+			"values": [20, 60, 85, 70, 50, 30, 25],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "wind10k",
 			"fullName": "Winds 10k ft AGL",
-			"values": [20, 30, 35, 20, 15, 20, 15]
+			"displayGreen": false,
+			"exactValue": false,
+			"values": [20, 30, 35, 20, 15, 20, 15],
+			"category": []
 		},
 		{
 			"dataType": "textbox",
 			"variable": "totalCloud",
 			"fullName": "Total Cloud Cover",
-			"values": [20, 30, 90, 50, 10, 20, 10]
+			"displayGreen": false,
+			"exactValue": false,
+			"values": [20, 30, 90, 50, 10, 20, 10],
+			"category": []
 		},
 		{
 			"dataType": "dropdown",
 			"variable": "visibility",
 			"fullName": "Visibility",
+			"displayGreen": false,
+			"exactValue": false,
 			"options": [
 				{
 					"color": "green",
-					"value": "",
-					"text": ""
+					"value": "> 3",
+					"text": "> 3"
 				},
 				{
 					"color": "yellow",
-					"value": "2to3",
-					"text": "2-3mi"
+					"value": "2-3",
+					"text": "2-3"
 				},
 				{
 					"color": "red",
-					"value": "less2",
-					"text": "0-2mi"
+					"value": "< 2",
+					"text": "< 2"
 				}
-			]
+			],
+			"values": ["> 3", "> 3", "> 3", "> 3", "> 3", "> 3", "> 3"],
+			"category": [0, 0, 0, 0, 0, 0, 0]
 		},
 		{
 			"dataType": "dropdown",
 			"variable": "wind5k",
 			"fullName": "Winds 5k ft AGL",
+			"displayGreen": false,
+			"exactValue": false,
 			"options": [
 				{
 					"color": "green",
-					"value": "",
-					"text": ""
+					"value": "< 20",
+					"text": "< 20"
 				},
 				{
 					"color": "yellow",
-					"value": "20to30",
+					"value": "20-30",
 					"text": "20-30"
 				},
 				{
 					"color": "red",
-					"value": "above30",
-					"text": "30+"
+					"value": "> 30",
+					"text": "> 30"
 				}
-			]
+			],
+			"values": ["< 20", "< 20", "< 20", "< 20", "< 20", "< 20", "< 20"],
+			"category": [0, 0, 0, 0, 0, 0, 0]
 		},
 		{
 			"dataType": "dropdown",
 			"variable": "lowestFltCat",
 			"fullName": "Lowest Flight Category",
+			"displayGreen": false,
+			"exactValue": false,
 			"options": [
 				{
 					"color": "green",
-					"value": "",
-					"text": ""
+					"value": "VFR",
+					"text": "VFR"
 				},
 				{
 					"color": "yellow",
@@ -120,17 +154,21 @@
 					"value": "IFR",
 					"text": "IFR"
 				}
-			]
+			],
+			"values": ["VFR", "VFR", "VFR", "VFR", "VFR", "VFR", "VFR"],
+			"category": [0, 0, 0, 0, 0, 0, 0]
 		},
 		{
 			"dataType": "dropdown",
 			"variable": "mtnObs",
 			"fullName": "Mountain Obscuration",
+			"displayGreen": false,
+			"exactValue": false,
 			"options": [
 				{
 					"color": "green",
-					"value": "",
-					"text": ""
+					"value": "none",
+					"text": "None"
 				},
 				{
 					"color": "yellow",
@@ -142,7 +180,9 @@
 					"value": "likely",
 					"text": "Likely"
 				}
-			]
+			],
+			"values": ["none", "none", "none", "none", "none", "none", "none"],
+			"category": [0, 0, 0, 0, 0, 0, 0]
 		}
 	]
 }

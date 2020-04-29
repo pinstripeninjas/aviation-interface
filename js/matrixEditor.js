@@ -1,6 +1,7 @@
 // JSON links to be adjusted accordingly
 const urlEditorData = "./json/editorData.json";
 const urlEditorCriteria = "./json/editorCriteria.json";
+const urlSubmittedForecast = "./";
 
 ///////////// Variables to select DOM elements //////////////
 const mainTable = document.querySelector("#main-table");
@@ -8,8 +9,9 @@ const criteriaTable = document.querySelector("#criteria-table");
 const submitBtn = document.querySelector("#submit-btn");
 const spinner = document.querySelector("#spinner");
 
-/////// Variable that holds sent criteria data ////////////
+/////// Variable that holds sent criteria and matrix data ////////////
 let criteriaData = {};
+let matrixData = {};
 
 //////////// button listener to request forecast ///////////
 const reqFcst = document.querySelector("#request-fcst");
@@ -42,6 +44,7 @@ const buildFullMatrix = () => {
 			axios.spread((forecast, criteria) => {
 				// makes criteria
 				criteriaData = criteria.data;
+				matrixData = forecast.data;
 				getCriteriaBody(criteria.data);
 				getCriteriaHeader(criteria.data);
 				// makes matrix
@@ -94,8 +97,9 @@ const buildTableTextbox = (data, i, tr) => {
 	for (let j = 0; j < data.validPeriod.day.length; j++) {
 		const newCell = tr.insertCell(j + 1);
 		const newInput = document.createElement("input");
-		newInput.setAttribute("name", data.forecast[i].variable + "[]");
+		newInput.setAttribute("name", data.forecast[i].variable);
 		newInput.setAttribute("type", "input");
+		newInput.setAttribute("data-fcst-period", j);
 		const newValue = data.forecast[i].values[j];
 		const newVariable = data.forecast[i].variable;
 		// add in class to color cell based on criteria
@@ -110,7 +114,8 @@ const buildTableDropdown = (data, i, tr) => {
 	for (let j = 0; j < data.validPeriod.day.length; j++) {
 		const newCell = tr.insertCell(j + 1);
 		const newSelect = document.createElement("select");
-		newSelect.setAttribute("name", data.forecast[i].variable + "[]");
+		newSelect.setAttribute("name", data.forecast[i].variable);
+		newSelect.setAttribute("data-fcst-period", j);
 		newCell.appendChild(newSelect);
 		for (let k = 0; k < data.forecast[i].options.length; k++) {
 			const newOption = document.createElement("option");
@@ -149,6 +154,8 @@ const addSubmitBtn = () => {
 	const newBtn = document.createElement("button");
 	newBtn.classList.add("btn", "btn-lg", "btn-primary", "my-4");
 	newBtn.innerHTML = "Submit Forecast";
+	newBtn.setAttribute("id", "submit-btn");
+	newBtn.addEventListener("click", submitForecast);
 	submitBtn.appendChild(newBtn);
 };
 
@@ -158,8 +165,19 @@ const colorListener = () => {
 	for (let input of inputListener) {
 		input.addEventListener("input", function (event) {
 			const changedValue = event.target.value;
-			const changedVariable = event.target.name.slice(0, -2);
-			console.log(changedValue, changedVariable, event.target);
+			const changedVariable = event.target.name;
+			const changedFcstPeriod = event.target.dataset.fcstPeriod;
+			// find where to edit matrixData object for updated value
+			for (search of matrixData.forecast) {
+				if (search.variable === changedVariable) {
+					// check if maxSfcWind to keep as string
+					if (changedVariable === "maxSfcWind") {
+						search.values[changedFcstPeriod] = changedValue;
+					} else {
+						search.values[changedFcstPeriod] = Number(changedValue);
+					}
+				}
+			}
 			this.parentNode.classList.remove("red", "yellow");
 			this.parentNode.classList.add(checkCriteria(changedValue, changedVariable));
 		});
@@ -171,6 +189,19 @@ const dropdownListener = () => {
 	const selectListener = document.querySelectorAll("select");
 	for (let select of selectListener) {
 		select.addEventListener("input", function (event) {
+			// update matrixData with value and category for dropdown field
+			const changedValue = event.target.value;
+			const changedVariable = event.target.name;
+			const changedCategory = event.target.selectedIndex;
+			const changedFcstPeriod = event.target.dataset.fcstPeriod;
+			// find where to edit matrixData object for updated value
+			for (search of matrixData.forecast) {
+				if (search.variable === changedVariable) {
+					search.values[changedFcstPeriod] = changedValue;
+					search.category[changedFcstPeriod] = changedCategory;
+				}
+			}
+			// apply proper color class
 			if (event.target.selectedIndex === 0) {
 				this.parentNode.classList.remove("red", "yellow");
 			} else if (event.target.selectedIndex === 1) {
@@ -202,4 +233,28 @@ const checkCriteria = (value, variable) => {
 	} else if (value > criteriaObj.green) {
 		return "yellow";
 	}
+};
+
+// Helper function to copy object
+function jsonCopy(src) {
+	return JSON.parse(JSON.stringify(src));
+}
+
+// Reorders the array based on starting and ending index
+function swapElement(array, indexA, indexB) {
+	const tmp = array[indexA];
+	array[indexA] = array[indexB];
+	array[indexB] = tmp;
+}
+
+// arranges matrixData into correct order and sends POSt request with JSON to server
+const submitForecast = () => {
+	const finalMatrixData = jsonCopy(matrixData);
+	// rearrange array
+	swapElement(finalMatrixData.forecast, 8, 6);
+	swapElement(finalMatrixData.forecast, 9, 7);
+	console.log(finalMatrixData);
+	const stringifyMatrixData = JSON.stringify(finalMatrixData);
+	// make POST request with final data
+	axios.post(urlSubmittedForecast, stringifyMatrixData);
 };
