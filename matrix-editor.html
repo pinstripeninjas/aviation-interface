@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Forecast Table</title>
+		<title>Matrix Editor</title>
 		<!-- Bootstrap CDN -->
 		<link
 			rel="stylesheet"
@@ -27,16 +27,21 @@
 	<body>
 		<!-- Navbar -->
 		<nav>
-			<div>
+			<div id="title-logo">
 				<img src="./imgs/150px-NOAA-Logo.png" alt="NOAA Logo" />
 				<img src="./imgs/150px-NWS-Logo.png" alt="NWS Logo" />
+				<!-- Nav Title -->
 				<h3><a href="https://www.weather.gov/twc">NWS TUCSON</a></h3>
 			</div>
-			<div>***EXPERIMENTAL***</div>
-			<ul>
-				<a href=""><li>Forecast Matrix</li></a>
-				<a href=""><li>Climatology</li></a>
-			</ul>
+			<div><span>***EXPERIMENTAL***</span></div>
+			<!-- Nav Links -->
+			<div id="nav-links">
+				<ul>
+					<!-- ...may need href to be updated -->
+					<a href=""><li>Forecast Matrix</li></a>
+					<a href=""><li>Climatology</li></a>
+				</ul>
+			</div>
 		</nav>
 		<!-- Body Content -->
 		<div class="container-fluid">
@@ -45,7 +50,6 @@
 					<button id="request-fcst" class="btn btn-lg btn-primary m-4" type="button">
 						Request New Forecast
 					</button>
-					<button class="btn btn-lg btn-secondary m-4">Edit Current Forecast</button>
 				</div>
 				<div class="col-8">
 					<form>
@@ -56,11 +60,8 @@
 					<table id="criteria-table" class="table"></table>
 				</div>
 			</div>
-			<div id="submit-btn" class="col-12 d-flex justify-content-center"></div>
+			<div id="submit-btn" class="col-12 d-flex justify-content-center align-items-center"></div>
 		</div>
-		<!-- <footer class="footer sticky-bottom">
-			<div class="text-muted">Here's a footer. Place feet here.</div>
-		</footer> -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

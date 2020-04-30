@@ -39,11 +39,14 @@ nav {
 	color: #fff;
 	height: 50px;
 	line-height: 50px;
-	justify-content: space-between;
+	justify-content: center;
 	padding: 0 15px;
-	div {
+	#title-logo {
 		display: flex;
+		flex: 1;
 		align-items: center;
+		justify-content: start;
+		margin: 0;
 		h3 {
 			margin: 0 2px;
 			font-weight: 400;
@@ -55,15 +58,21 @@ nav {
 			height: 30px;
 		}
 	}
-	ul {
+	#nav-links {
 		display: flex;
-		li {
-			list-style-type: none;
-			padding: 0 15px;
-			transition: all 0.5s;
-			&:hover {
-				background-color: darken($primary-blue, 10%);
-				cursor: pointer;
+		flex: 1;
+		justify-content: flex-end;
+		ul {
+			display: flex;
+			padding: 0;
+			li {
+				list-style-type: none;
+				padding: 0 15px;
+				transition: all 0.5s;
+				&:hover {
+					background-color: darken($primary-blue, 10%);
+					cursor: pointer;
+				}
 			}
 		}
 	}

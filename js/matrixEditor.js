@@ -260,12 +260,12 @@ const submitForecast = () => {
 		.then(() => {
 			const message = document.createElement("p");
 			message.innerText = "Submitted Successfully";
-			submitBtn.appendChild(message);
+			submitBtn.append(message);
 		})
 		.catch((err) => {
 			console.log(err);
 			const message = document.createElement("p");
 			message.innerHTML = "Something Went Wrong <br>" + err;
-			submitBtn.appendChild(message);
+			submitBtn.append(message);
 		});
 };
