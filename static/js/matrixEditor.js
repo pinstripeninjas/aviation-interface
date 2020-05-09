@@ -1,7 +1,23 @@
 // JSON links to be adjusted accordingly
-const urlEditorData = "./json/editorData.json";
-const urlEditorCriteria = "./json/editorCriteria.json";
+const urlEditorData = "./static/json/editorData.json";
+const urlEditorCriteria = "./static/json/editorCriteria.json";
 const urlSubmittedForecast = "https://5ea9e029a873660016720f47.mockapi.io/forecast";
+
+// Creates validPeriod variable based on current date
+const currentDate = new Date();
+const adjustedDate = new Date();
+const validPeriod = {};
+validPeriod.day = [];
+validPeriod.date = [];
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function buildDays() {
+	for (let i = 0; i < 7; i++) {
+		validPeriod.day.push(daysOfWeek[adjustedDate.getDay()]);
+		validPeriod.date.push(`${adjustedDate.getMonth() + 1}/${adjustedDate.getDate()}`);
+		adjustedDate.setDate(adjustedDate.getDate() + 1);
+	}
+}
+buildDays();
 
 ///////////// Variables to select DOM elements //////////////
 const mainTable = document.querySelector("#main-table");
@@ -69,9 +85,9 @@ const buildTableHeader = (data) => {
 	const tr = thead.insertRow();
 	const blankTh = document.createElement("th");
 	tr.appendChild(blankTh);
-	for (let i = 0; i < data.validPeriod.date.length; i++) {
+	for (let i = 0; i < validPeriod.date.length; i++) {
 		const th = document.createElement("th");
-		th.innerHTML = `${data.validPeriod.day[i]}<br>${data.validPeriod.date[i]}`;
+		th.innerHTML = `${validPeriod.day[i]}<br>${validPeriod.date[i]}`;
 		th.classList.add("center");
 		tr.appendChild(th);
 	}
@@ -94,7 +110,7 @@ const buildTableBody = (data) => {
 
 ///////////// Function to build textbox datatype ////////////////////
 const buildTableTextbox = (data, i, tr) => {
-	for (let j = 0; j < data.validPeriod.day.length; j++) {
+	for (let j = 0; j < validPeriod.day.length; j++) {
 		const newCell = tr.insertCell(j + 1);
 		const newInput = document.createElement("input");
 		newInput.setAttribute("name", data.forecast[i].variable);
@@ -111,7 +127,7 @@ const buildTableTextbox = (data, i, tr) => {
 
 /////////// Function to build dropdown section of table ///////////////
 const buildTableDropdown = (data, i, tr) => {
-	for (let j = 0; j < data.validPeriod.day.length; j++) {
+	for (let j = 0; j < validPeriod.day.length; j++) {
 		const newCell = tr.insertCell(j + 1);
 		const newSelect = document.createElement("select");
 		newSelect.setAttribute("name", data.forecast[i].variable);
@@ -252,7 +268,7 @@ const submitForecast = () => {
 	// rearrange array
 	swapElement(finalMatrixData.forecast, 8, 6);
 	swapElement(finalMatrixData.forecast, 9, 7);
-	console.log(finalMatrixData);
+	finalMatrixData.validPeriod = validPeriod;
 	const stringifyMatrixData = JSON.stringify(finalMatrixData);
 	// make POST request with final data
 	axios
@@ -269,3 +285,14 @@ const submitForecast = () => {
 			submitBtn.append(message);
 		});
 };
+
+// // Send a POST request
+// axios({
+//   method: 'post',
+//   url: urlSubmittedForecast,
+// 	data: stringifyMatrixData,
+// 	// xsrfCookieName: 'XSRF-TOKEN', // default
+// 	xsrfCookieName: 'csrftoken',
+// 	// xsrfHeaderName: 'X-XSRF-TOKEN', // default
+// 	xsrfHeaderName: 'X-CSRFToken'
+// }).then( everything else )
